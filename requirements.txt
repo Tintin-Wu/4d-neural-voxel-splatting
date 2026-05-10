@@ -1,0 +1,50 @@
+# 4D Neural Voxel Splatting — runtime dependencies
+#
+# Tested with Python 3.12, CUDA 12.1, PyTorch 2.2.0.
+#
+# Installation (one shot):
+#   pip install -r requirements.txt \
+#       --extra-index-url https://download.pytorch.org/whl/cu121 \
+#       -f https://data.pyg.org/whl/torch-2.2.0+cu121.html \
+#       -f https://download.openmmlab.com/mmcv/dist/cu121/torch2.2/index.html
+#
+# Then install the in-tree CUDA extensions:
+#   pip install -e submodules/diff-gaussian-rasterization
+#   pip install -e submodules/simple-knn
+
+# --- PyTorch (tight version coupling; bump as a unit) ---
+torch==2.2.0+cu121
+torchvision==0.17.0+cu121
+torchaudio==2.2.0+cu121
+torch_scatter==2.1.2+pt22cu121
+
+# --- Scientific / numerical ---
+numpy>=1.26,<2.0
+scipy
+scikit-learn
+matplotlib
+opencv-python
+
+# --- 3D + I/O ---
+open3d
+plyfile
+pyquaternion
+imageio
+pillow>=10
+
+# --- Metrics ---
+lpips
+
+# --- Config / utilities ---
+ConfigArgParse
+PyYAML
+tqdm
+einops
+addict
+
+# --- Logging ---
+tensorboard
+
+# --- mmengine ecosystem (configs) ---
+mmcv==2.2.0
+mmengine>=0.10
