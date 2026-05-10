@@ -143,6 +143,30 @@
     .video-grid video { width: 100%; border-radius: 4px; display: block; }
     .video-full { margin-top: 16px; }
     .video-full video { width: 100%; border-radius: 4px; display: block; }
+    .video-item { margin: 0; }
+    .video-label {
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: 6px;
+    }
+    .video-desc {
+      font-family: system-ui, sans-serif;
+      font-size: 12px;
+      color: #666;
+      margin-top: 8px;
+      line-height: 1.55;
+    }
+    .teaser-caption {
+      max-width: 860px;
+      margin: 10px auto 0;
+      padding: 0 24px;
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+    }
 
     /* ── BibTeX ── */
     .bibtex-wrap { position: relative; }
@@ -223,6 +247,7 @@
       <source src="assets/Appendix_1.mp4" type="video/mp4">
       Your browser does not support video. <a href="assets/Appendix_1.mp4">Download the clip.</a>
     </video>
+    <p class="teaser-caption">Qualitative comparison with 4D-GS on the HyperNeRF-Interp dataset.</p>
   </div>
 
   <!-- ── 3. ABSTRACT ── -->
@@ -269,20 +294,32 @@
     <div class="container">
       <p class="section-heading">Supplementary Results</p>
       <div class="video-grid">
-        <video title="Supplementary result 1" autoplay muted loop playsinline preload="auto">
-          <source src="assets/Appendix_2.mp4" type="video/mp4">
-          <a href="assets/Appendix_2.mp4">Download clip.</a>
-        </video>
-        <video title="Supplementary result 2" autoplay muted loop playsinline preload="auto">
-          <source src="assets/Appendix_3.mp4" type="video/mp4">
-          <a href="assets/Appendix_3.mp4">Download clip.</a>
-        </video>
+        <figure class="video-item">
+          <p class="video-label">HyperNeRF Rendered Scenes</p>
+          <video title="HyperNeRF rendered scenes" autoplay muted loop playsinline preload="auto">
+            <source src="assets/Appendix_2.mp4" type="video/mp4">
+            <a href="assets/Appendix_2.mp4">Download clip.</a>
+          </video>
+          <figcaption class="video-desc">Scenes rendered using our method on the HyperNeRF dataset, highlighting its ability to handle complex dynamic scenes with photorealistic quality.</figcaption>
+        </figure>
+        <figure class="video-item">
+          <p class="video-label">Ub4D Monocular Rendered Scenes</p>
+          <video title="Ub4D monocular rendered scenes" autoplay muted loop playsinline preload="auto">
+            <source src="assets/Appendix_3.mp4" type="video/mp4">
+            <a href="assets/Appendix_3.mp4">Download clip.</a>
+          </video>
+          <figcaption class="video-desc">Scenes rendered on the Ub4D dataset showcasing our method's ability to handle monocular video inputs.</figcaption>
+        </figure>
       </div>
       <div class="video-full">
-        <video title="Supplementary result 3" autoplay muted loop playsinline preload="auto">
-          <source src="assets/Appendix_4.mp4" type="video/mp4">
-          <a href="assets/Appendix_4.mp4">Download clip.</a>
-        </video>
+        <figure class="video-item">
+          <p class="video-label">Ablation Studies</p>
+          <video title="Ablation studies" autoplay muted loop playsinline preload="auto">
+            <source src="assets/Appendix_4.mp4" type="video/mp4">
+            <a href="assets/Appendix_4.mp4">Download clip.</a>
+          </video>
+          <figcaption class="video-desc">Comparing outputs with and without view refinement, demonstrating its impact on rendering quality and temporal consistency.</figcaption>
+        </figure>
       </div>
     </div>
   </section>
