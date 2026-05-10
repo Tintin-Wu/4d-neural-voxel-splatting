@@ -225,6 +225,31 @@
     </video>
   </div>
 
+  <!-- ── 3. ABSTRACT ── -->
+  <section>
+    <div class="container">
+      <p class="section-heading">Abstract</p>
+      <p class="abstract-text">
+        Although 3D Gaussian Splatting (3D-GS) achieves efficient rendering for
+        novel view synthesis, extending it to dynamic scenes still results in
+        substantial memory overhead from replicating Gaussians across frames. To
+        address this challenge, we propose <strong>4D Neural Voxel Splatting
+        (4D-NVS)</strong>, which combines voxel-based representations with neural
+        Gaussian splatting for efficient dynamic scene modeling. Instead of
+        generating separate Gaussian sets per timestamp, our method employs a
+        compact set of neural voxels with learned deformation fields to model
+        temporal dynamics. The design greatly reduces memory consumption and
+        accelerates training while preserving high image quality. We further
+        introduce a novel view refinement stage that selectively improves
+        challenging viewpoints through targeted optimization, maintaining global
+        efficiency while enhancing rendering quality for difficult viewing angles.
+        Experiments demonstrate that our method outperforms state-of-the-art
+        approaches with significant memory reduction and faster training, enabling
+        real-time rendering with superior visual fidelity.
+      </p>
+    </div>
+  </section>
+
   <!-- remaining sections go here -->
 
   <script>
