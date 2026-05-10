@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4D Neural Voxel Splatting</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Georgia, serif;
+      background: #fff;
+      color: #222;
+      line-height: 1.65;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Header ── */
+    header {
+      text-align: center;
+      padding: 52px 24px 36px;
+    }
+    .venue {
+      font-family: system-ui, sans-serif;
+      font-size: 12px;
+      color: #999;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 18px;
+      color: #111;
+    }
+    .authors {
+      font-family: system-ui, sans-serif;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 6px;
+    }
+    .authors sup { font-size: 10px; vertical-align: super; }
+    .affiliations {
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 26px;
+    }
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      font-family: system-ui, sans-serif;
+      font-size: 14px;
+      padding: 6px 20px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      background: #f4f4f4;
+      color: #333;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .btn:hover { background: #e8e8e8; }
+    .btn.disabled {
+      color: #bbb;
+      border-color: #e4e4e4;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    /* ── Section chrome ── */
+    section { padding: 48px 0; border-top: 1px solid #eee; }
+    .section-heading {
+      font-family: system-ui, sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-align: center;
+      color: #777;
+      margin-bottom: 28px;
+    }
+
+    /* ── Teaser band ── */
+    .teaser-band {
+      background: #f5f5f5;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      padding: 28px 0;
+    }
+    .teaser-band video {
+      width: 100%;
+      max-width: 860px;
+      display: block;
+      margin: 0 auto;
+      border-radius: 4px;
+    }
+
+    /* ── Abstract ── */
+    .abstract-text {
+      font-size: 16px;
+      line-height: 1.85;
+      text-align: justify;
+      color: #333;
+    }
+
+    /* ── Method figure ── */
+    .method-figure { width: 100%; border-radius: 4px; display: block; }
+    .figure-caption {
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      color: #666;
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.55;
+    }
+
+    /* ── Video grid ── */
+    .video-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .video-grid video { width: 100%; border-radius: 4px; display: block; }
+    .video-full { margin-top: 16px; }
+    .video-full video { width: 100%; border-radius: 4px; display: block; }
+
+    /* ── BibTeX ── */
+    .bibtex-wrap { position: relative; }
+    .bibtex-block {
+      background: #f8f8f8;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      padding: 20px 20px 20px 20px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 13px;
+      line-height: 1.75;
+      color: #333;
+      overflow-x: auto;
+      white-space: pre;
+    }
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-family: system-ui, sans-serif;
+      font-size: 12px;
+      padding: 4px 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      cursor: pointer;
+      color: #555;
+      transition: background 0.15s;
+    }
+    .copy-btn:hover { background: #f0f0f0; }
+
+    /* ── Footer ── */
+    footer {
+      padding: 36px 24px;
+      text-align: center;
+      border-top: 1px solid #eee;
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      color: #999;
+      line-height: 1.8;
+    }
+    footer a { color: #777; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      h1 { font-size: 1.55rem; }
+      .video-grid { grid-template-columns: 1fr; }
+      .video-full { margin-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── 1. HEADER ── -->
+  <header>
+    <p class="venue">IEEE International Conference on Image Processing (ICIP) 2026</p>
+    <h1>4D Neural Voxel Splatting</h1>
+    <p class="authors">
+      Chun Tin Wu<sup>1</sup>&ensp;
+      Jun Cheng Chen<sup>2</sup>
+    </p>
+    <p class="affiliations">
+      <sup>1</sup>&thinsp;National Taiwan University &emsp;
+      <sup>2</sup>&thinsp;Academia Sinica
+    </p>
+    <div class="links">
+      <span class="btn disabled">📄 Paper (Coming Soon)</span>
+      <a class="btn" href="https://arxiv.org/abs/2511.00560" target="_blank" rel="noopener">📝 arXiv</a>
+      <a class="btn" href="https://github.com/Tintin-Wu/4d-neural-voxel-splatting" target="_blank" rel="noopener">💻 Code</a>
+    </div>
+  </header>
+
+  <!-- remaining sections go here -->
+
+  <script>
+    function copyBibtex() {
+      const text = document.getElementById('bibtex-text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
