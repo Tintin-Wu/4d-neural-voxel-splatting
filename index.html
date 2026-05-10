@@ -53,8 +53,16 @@
       font-family: system-ui, sans-serif;
       font-size: 13px;
       color: #888;
+      margin-bottom: 16px;
+    }
+    .affil-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
       margin-bottom: 26px;
     }
+    .affil-logo { height: 52px; width: auto; }
     .links {
       display: flex;
       justify-content: center;
@@ -235,6 +243,10 @@
       <sup>1</sup>&thinsp;National Taiwan University &emsp;
       <sup>2</sup>&thinsp;Academia Sinica
     </p>
+    <div class="affil-logos">
+      <img class="affil-logo" src="assets/logo_ntu.png" alt="National Taiwan University">
+      <img class="affil-logo" src="assets/logo_academia_sinica.png" alt="Academia Sinica">
+    </div>
     <div class="links">
       <button class="btn disabled" disabled aria-disabled="true">📄 Paper (Coming Soon)</button>
       <a class="btn" href="https://arxiv.org/abs/2511.00560" target="_blank" rel="noopener">📝 arXiv</a>
