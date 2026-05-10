@@ -24,6 +24,8 @@
     header {
       text-align: center;
       padding: 52px 24px 36px;
+      max-width: 860px;
+      margin: 0 auto;
     }
     .venue {
       font-family: system-ui, sans-serif;
@@ -70,6 +72,7 @@
       color: #333;
       text-decoration: none;
       transition: background 0.15s;
+      cursor: pointer;
     }
     .btn:hover { background: #e8e8e8; }
     .btn.disabled {
@@ -77,6 +80,11 @@
       border-color: #e4e4e4;
       cursor: not-allowed;
       pointer-events: none;
+      background: #f4f4f4;
+    }
+    button.btn {
+      border: 1px solid #ccc;
+      font-family: system-ui, sans-serif;
     }
 
     /* ── Section chrome ── */
@@ -142,7 +150,7 @@
       background: #f8f8f8;
       border: 1px solid #e0e0e0;
       border-radius: 6px;
-      padding: 20px 20px 20px 20px;
+      padding: 20px;
       font-family: 'Courier New', Courier, monospace;
       font-size: 13px;
       line-height: 1.75;
@@ -182,6 +190,7 @@
     /* ── Responsive ── */
     @media (max-width: 600px) {
       h1 { font-size: 1.55rem; }
+      .abstract-text { text-align: left; }
       .video-grid { grid-template-columns: 1fr; }
       .video-full { margin-top: 0; }
     }
@@ -202,7 +211,7 @@
       <sup>2</sup>&thinsp;Academia Sinica
     </p>
     <div class="links">
-      <span class="btn disabled">📄 Paper (Coming Soon)</span>
+      <button class="btn disabled" disabled aria-disabled="true">📄 Paper (Coming Soon)</button>
       <a class="btn" href="https://arxiv.org/abs/2511.00560" target="_blank" rel="noopener">📝 arXiv</a>
       <a class="btn" href="https://github.com/Tintin-Wu/4d-neural-voxel-splatting" target="_blank" rel="noopener">💻 Code</a>
     </div>
@@ -213,11 +222,31 @@
   <script>
     function copyBibtex() {
       const text = document.getElementById('bibtex-text').innerText;
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.getElementById('copy-btn');
+      const btn = document.getElementById('copy-btn');
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = 'Copied!';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        }).catch(() => {
+          fallbackCopy(text, btn);
+        });
+      } else {
+        fallbackCopy(text, btn);
+      }
+    }
+    function fallbackCopy(text, btn) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
         btn.textContent = 'Copied!';
         setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
-      });
+      } catch (e) {}
+      document.body.removeChild(ta);
     }
   </script>
 
