@@ -139,10 +139,11 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
+      align-items: start;
     }
-    .video-grid video { width: 100%; border-radius: 4px; display: block; }
+    .video-grid video { width: 100%; aspect-ratio: 16/9; border-radius: 4px; display: block; object-fit: contain; background: #000; }
     .video-full { margin-top: 16px; }
-    .video-full video { width: 100%; border-radius: 4px; display: block; }
+    .video-full video { width: 100%; aspect-ratio: 16/9; border-radius: 4px; display: block; object-fit: contain; background: #000; }
     .video-item { margin: 0; }
     .video-label {
       font-family: system-ui, sans-serif;
