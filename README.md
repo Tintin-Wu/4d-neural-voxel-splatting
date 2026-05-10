@@ -4,10 +4,36 @@
 
 ### [Project Page](TBD) | [Paper](TBD) | [arXiv](TBD)
 
+<p align="center">
+  <img src="assets/teaser.png" alt="4D Neural Voxel Splatting teaser" width="100%">
+</p>
+
 **4D Neural Voxel Splatting** combines the compact neural-voxel anchor representation
 of Scaffold-GS with the multi-resolution HexPlane temporal deformation of 4D Gaussian
 Splatting, yielding a memory-efficient, temporally-coherent 4D scene representation
 for real-time dynamic novel-view synthesis.
+
+📄 [Teaser (PDF)](assets/Teaser.pdf) &nbsp;·&nbsp; [Method Overview (PDF)](assets/Overview.pdf)
+
+---
+
+## Method Overview
+
+<p align="center">
+  <img src="assets/overview.png" alt="Method overview" width="100%">
+</p>
+
+---
+
+## Supplementary Videos
+
+| | |
+| --- | --- |
+| [Appendix 1](assets/Appendix_1.mp4) | [Appendix 2](assets/Appendix_2.mp4) |
+| [Appendix 3](assets/Appendix_3.mp4) | [Appendix 4](assets/Appendix_4.mp4) |
+
+> Videos are stored via Git LFS — clone with LFS support to download them, or
+> view them on the GitHub web UI.
 
 ---
 
